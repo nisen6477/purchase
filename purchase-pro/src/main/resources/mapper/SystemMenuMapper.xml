@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.hpu.purchase.mapper.system.SystemMenuMapper" >
+  <resultMap id="BaseResultMap" type="cn.hpu.purchase.po.system.SystemMenu" >
+    <id column="system_menu_id" property="systemMenuId" jdbcType="INTEGER" />
+    <result column="system_id" property="systemId" jdbcType="INTEGER" />
+    <result column="menu_code" property="menuCode" jdbcType="VARCHAR" />
+    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+    <result column="word_id" property="wordId" jdbcType="INTEGER" />
+    <result column="parent_menu_id" property="parentMenuId" jdbcType="INTEGER" />
+    <result column="serial_no" property="serialNo" jdbcType="INTEGER" />
+    <result column="navigate_url" property="navigateUrl" jdbcType="VARCHAR" />
+    <result column="icon_url" property="iconUrl" jdbcType="VARCHAR" />
+    <result column="menu_type" property="menuType" jdbcType="VARCHAR" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="modify_by" property="modifyBy" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List" >
+    system_menu_id, system_id, menu_code, menu_name, word_id, parent_menu_id, serial_no, 
+    navigate_url, icon_url, menu_type, created_by, created_date, modify_by, modify_date, 
+    deleted, remark
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_menu
+    where system_menu_id = #{systemMenuId,jdbcType=INTEGER}
+  </select>
+  
+  <insert id="insert" parameterType="cn.hpu.purchase.po.system.SystemMenu" >
+    insert into system_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="systemMenuId != null" >
+        system_menu_id,
+      </if>
+      <if test="systemId != null" >
+        system_id,
+      </if>
+      <if test="menuCode != null" >
+        menu_code,
+      </if>
+      <if test="menuName != null" >
+        menu_name,
+      </if>
+      <if test="wordId != null" >
+        word_id,
+      </if>
+      <if test="parentMenuId != null" >
+        parent_menu_id,
+      </if>
+      <if test="serialNo != null" >
+        serial_no,
+      </if>
+      <if test="navigateUrl != null" >
+        navigate_url,
+      </if>
+      <if test="iconUrl != null" >
+        icon_url,
+      </if>
+      <if test="menuType != null" >
+        menu_type,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="createdDate != null" >
+        created_date,
+      </if>
+      <if test="modifyBy != null" >
+        modify_by,
+      </if>
+      <if test="modifyDate != null" >
+        modify_date,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="systemMenuId != null" >
+        #{systemMenuId,jdbcType=INTEGER},
+      </if>
+      <if test="systemId != null" >
+        #{systemId,jdbcType=INTEGER},
+      </if>
+      <if test="menuCode != null" >
+        #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="wordId != null" >
+        #{wordId,jdbcType=INTEGER},
+      </if>
+      <if test="parentMenuId != null" >
+        #{parentMenuId,jdbcType=INTEGER},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=INTEGER},
+      </if>
+      <if test="navigateUrl != null" >
+        #{navigateUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="iconUrl != null" >
+        #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null" >
+        #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="cn.hpu.purchase.po.system.SystemMenu" >
+    update system_menu
+    <set >
+      <if test="systemId != null" >
+        system_id = #{systemId,jdbcType=INTEGER},
+      </if>
+      <if test="menuCode != null" >
+        menu_code = #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null" >
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="wordId != null" >
+        word_id = #{wordId,jdbcType=INTEGER},
+      </if>
+      <if test="parentMenuId != null" >
+        parent_menu_id = #{parentMenuId,jdbcType=INTEGER},
+      </if>
+      <if test="serialNo != null" >
+        serial_no = #{serialNo,jdbcType=INTEGER},
+      </if>
+      <if test="navigateUrl != null" >
+        navigate_url = #{navigateUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="iconUrl != null" >
+        icon_url = #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null" >
+        menu_type = #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        modify_by = #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where system_menu_id = #{systemMenuId,jdbcType=INTEGER}
+  </update>
+
+  <select id="getSystemMenuBySystemIDAndSystemUserID" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+        system_menu.*,system_user_access.system_user_access_id
+        FROM
+        system_menu
+        LEFT JOIN system_user_access ON system_user_access.system_menu_id = system_menu.system_menu_id
+        AND system_menu.deleted = 0
+        WHERE
+        system_menu.deleted=0
+        AND
+        system_user_access.user_id = #{systemUserID}
+        AND
+        <if test="systemID != null">
+          system_menu.system_id = #{systemID}
+        </if>
+        ORDER BY
+	    system_menu.serial_no
+  </select>
+
+  <!--根据systemID和parentSystemMenuID获取用户在相关系统下的菜单-->
+  <select id="getSystemMenuBySystemIDAndParentSystemMenuID" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    system_menu.*
+    FROM
+    system_user_access
+    LEFT JOIN system_menu ON system_user_access.system_menu_id = system_menu.system_menu_id
+    LEFT JOIN system_menu parentSystemMenu ON system_menu.parent_menu_id = parentSystemMenu.system_menu_id AND system_menu.deleted =0
+    WHERE
+    system_user_access.user_id =  #{systemUserID}
+    AND parentSystemMenu.system_menu_id= #{systemMenuID}
+    ORDER BY system_menu.serial_no,system_menu.system_menu_id
+  </select>
+</mapper>

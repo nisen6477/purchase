@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+      <!--mybatis 创建session工厂-->
+        <bean id="sessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+            <property name="dataSource" ref="dataSource"/>
+            <!--加载mybatis映射文件-->
+            <property name="configLocation" value="classpath:mybatis-config.xml"/>
+            <!-- 加载mapper映射文件 -->
+            <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+            <!-- 加载别名 -->
+            <property name="typeAliasesPackage" value="cn.hpu.purchase.po"/>
+        </bean>
+
+        <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+            <constructor-arg ref="sessionFactoryBean" />
+        </bean>
+        <!-- 扫包 -->
+        <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+            <property name="basePackage" value="cn.hpu.purchase.mapper"/>
+        </bean>
+
+</beans>

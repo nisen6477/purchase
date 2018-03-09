@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="test/mapper.SystemUserMapper" >
+  <resultMap id="BaseResultMap" type="test/po.SystemUser" >
+    <id column="system_user_id" property="systemUserId" jdbcType="INTEGER" />
+    <result column="system_id" property="systemId" jdbcType="INTEGER" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="warehouse_id" property="warehouseId" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="login_id" property="loginId" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="first_name" property="firstName" jdbcType="VARCHAR" />
+    <result column="middle_name" property="middleName" jdbcType="VARCHAR" />
+    <result column="last_name" property="lastName" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="profile_photo_id" property="profilePhotoId" jdbcType="INTEGER" />
+    <result column="access_right" property="accessRight" jdbcType="INTEGER" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <result column="status_id" property="statusId" jdbcType="INTEGER" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="modify_by" property="modifyBy" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from system_user
+    where system_user_id = #{systemUserId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="test/po.SystemUser" >
+    insert into system_user (system_user_id, system_id, store_id, 
+      warehouse_id, role_id, login_id, 
+      password, first_name, middle_name, 
+      last_name, email, profile_photo_id, 
+      access_right, user_type, status_id, 
+      created_by, created_date, modify_by, 
+      modify_date, deleted, remark
+      )
+    values (#{systemUserId,jdbcType=INTEGER}, #{systemId,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, 
+      #{warehouseId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{loginId,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, #{middleName,jdbcType=VARCHAR}, 
+      #{lastName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{profilePhotoId,jdbcType=INTEGER}, 
+      #{accessRight,jdbcType=INTEGER}, #{userType,jdbcType=VARCHAR}, #{statusId,jdbcType=INTEGER}, 
+      #{createdBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, 
+      #{modifyDate,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="test/po.SystemUser" >
+    update system_user
+    set system_id = #{systemId,jdbcType=INTEGER},
+      store_id = #{storeId,jdbcType=INTEGER},
+      warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER},
+      login_id = #{loginId,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      first_name = #{firstName,jdbcType=VARCHAR},
+      middle_name = #{middleName,jdbcType=VARCHAR},
+      last_name = #{lastName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      profile_photo_id = #{profilePhotoId,jdbcType=INTEGER},
+      access_right = #{accessRight,jdbcType=INTEGER},
+      user_type = #{userType,jdbcType=VARCHAR},
+      status_id = #{statusId,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where system_user_id = #{systemUserId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select system_user_id, system_id, store_id, warehouse_id, role_id, login_id, password, 
+    first_name, middle_name, last_name, email, profile_photo_id, access_right, user_type, 
+    status_id, created_by, created_date, modify_by, modify_date, deleted, remark
+    from system_user
+    where system_user_id = #{systemUserId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select system_user_id, system_id, store_id, warehouse_id, role_id, login_id, password, 
+    first_name, middle_name, last_name, email, profile_photo_id, access_right, user_type, 
+    status_id, created_by, created_date, modify_by, modify_date, deleted, remark
+    from system_user
+  </select>
+</mapper>
