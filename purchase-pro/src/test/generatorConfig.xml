@@ -40,8 +40,9 @@
         </javaClientGenerator>
 
         <!-- 指定数据库表 -->
-        <table tableName="system_menu" />
-        <table tableName="system_user" />
+        <table tableName="inquiry_detail" />
+        <table tableName="inquiry_header" />
+        <!--<table tableName="storage_detail" />-->
         <!--<table tableName="orders" />-->
         <!--<table tableName="orderdetail" />-->
     </context>

@@ -834,7 +834,7 @@ function getSupplierForSpinner(ctrlID, selectVal, isViewAll, isAsync) {
                 $("#" + ctrlID + "").append("<option value=''> 查看全部</option>");
             }
             $.each(data, function (i, item) {
-                $("#" + ctrlID + "").append("<option value='" + item.supplier_id + "'>" + item.short_name + "</option>")
+                $("#" + ctrlID + "").append("<option value='" + item.supplierId + "'>" + item.shortName + "</option>")
             });
             if (selectVal != "") {
                 $("#" + ctrlID + "").val(selectVal);
@@ -930,7 +930,7 @@ function getPurchaseStatusForSpinner(ctrlID, selectVal, isViewAll, isAsync) {
                 $("#" + ctrlID + "").append("<option value=''> 查看全部</option>");
             }
             $.each(data, function (i, item) {
-                $("#" + ctrlID + "").append("<option value='" + item.status_id + "'>" + item.status_name + "</option>")
+                $("#" + ctrlID + "").append("<option value='" + item.statusId + "'>" + item.statusName + "</option>")
             });
             if (selectVal != "") {
                 $("#" + ctrlID + "").val(selectVal);
@@ -1068,7 +1068,7 @@ function getPurchaseTypeForSpinner(ctrlID, selectVal, isViewAll, isAsync) {
                 $("#" + ctrlID + "").append("<option value=''> 查看全部</option>");
             }
             $.each(data, function (i, item) {
-                $("#" + ctrlID + "").append("<option value='" + item.purchase_type_id + "'>" + item.purchase_type_name + "</option>")
+                $("#" + ctrlID + "").append("<option value='" + item.purchaseTypeId + "'>" + item.purchaseTypeName + "</option>")
             });
             if (selectVal != "") {
                 $("#" + ctrlID + "").val(selectVal);
@@ -1101,7 +1101,7 @@ function getAdvPositionForSpinner(ctrlID, selectVal, isViewAll, isAsync) {
 
 function getWarehouseUserForSpinner(ctrlID, selectVal, isViewAll, isAsync) {
     $.ajax({
-        url: basePath + "ba/system/system/getWarehouseUserForSpinner",
+        url: basePath + "ba/system/user/getWarehouseUserForSpinner",
         type: "post",
         async: isAsync,
         success: function (data) {
@@ -1223,7 +1223,7 @@ function getSystemUserStatusForSpinner(ctrlID, selectVal) {
 /*管理员级别*/
 function getSystemUserAccessRightForSpinner(ctrlID, selectVal) {
     $.ajax({
-        url: basePath + "ba/system/system/getSystemUserAccessRightForSpinner",
+        url: basePath + "ba/system/user/getSystemUserAccessRightForSpinner",
         type: "post",
         success: function (data) {
             $("#" + ctrlID + "").empty();
@@ -1271,7 +1271,7 @@ function getCustomerVipLevelForSpinner(ctrlID, selectVal, isViewAll) {
  */
 function getCsSystemUserForSpinner(ctrlID, selectVal, isViewAll) {
     $.ajax({
-        url: basePath + "ba/system/system/csSystemUserForSpinner",
+        url: basePath + "ba/system/user/csSystemUserForSpinner",
         type: "post",
         datatype: "json",
         success: function (data) {

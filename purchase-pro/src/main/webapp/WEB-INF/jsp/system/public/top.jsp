@@ -1,10 +1,3 @@
-<%--
-  @author IntelliJ IDEA.
-  User: 张春阳
-  Date: 2017/2/24
-  Time: 9:20
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -25,7 +18,7 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-leaf"></i>
-                    <span class="name"> 换肤${sessionScope.SESSION_ADMIN}</span>
+                    <span class="name"> 换肤</span>
                     <i class="fa fa-angle-down"></i>
                 </a>
                 <ul class="dropdown-menu skins">
@@ -45,13 +38,13 @@
         <ul class="nav navbar-nav pull-right">
             <li class="dropdown user pull-right" id="header-user">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <%--<c:if test="${sessionScope.SESSION_ADMIN.profilePhoto != null}">--%>
-                        <%--<img class="table-image" src="${sessionScope.SESSION_ADMIN.profilePhoto}">--%>
-                    <%--</c:if>--%>
-                    <%--<c:if test="${sessionScope.SESSION_ADMIN.profilePhoto == null}">--%>
-                        <%--<img class="table-image" src="system/img/profile_default.png">--%>
-                    <%--</c:if>--%>
-                    <%--<span class="username">${sessionScope.SESSION_ADMIN.loginID} </span>--%>
+                    <c:if test="${sessionScope.SESSION_ADMIN.profilePhotoId == null}">
+                        <img class="table-image" src="${sessionScope.SESSION_ADMIN.profilePhotoId}">
+                    </c:if>
+                    <c:if test="${sessionScope.SESSION_ADMIN.profilePhotoId != null}">
+                        <img class="table-image" src="system/img/profile_default.png">
+                    </c:if>
+                    <span class="username">${sessionScope.SESSION_ADMIN.loginId} </span>
                     <i class="fa fa-angle-down"></i>
                 </a>
                 <ul class="dropdown-menu">

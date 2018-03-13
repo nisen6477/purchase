@@ -4,14 +4,12 @@
 <html>
 <head>
     <title>采购管理系统 - Chinook</title>
-
     <%@include file="../public/head.jsp"%>
 </head>
 <body>
 <jsp:include page="../public/top.jsp"></jsp:include>
-<input id="currentPage" type="hidden" value="${pd.page}"/>
 <section id="page">
-    <%--<jsp:include page="../public/left.jsp"></jsp:include>--%>
+    <jsp:include page="../public/left.jsp"></jsp:include>
     <div id="main-content">
         <div class="container">
             <div class="row">
@@ -187,8 +185,8 @@
 </section>
 <script>
     $(function () {
-        // getPurchaseRankTopTen();
-        // getPurchaseChartAndOtherMsg();
+        getPurchaseRankTopTen();    // 获取采购商品数量排行 Top10 &&  采购商品金额排行 Top10
+        getPurchaseChartAndOtherMsg();  // 获取采购总金额等信息
     });
 
     function getPurchaseRankTopTen() {
@@ -207,7 +205,7 @@
                 }
                 $.each(data.quantity, function (i, item) {
                     var tr = "<tr><td class=\"table-col-center\">"+ item.sku +"</td>" +
-                            "<td class=\"table-col-left\">"+ item.product_name +"</td>" +
+                            "<td class=\"table-col-left\">"+ item.productName +"</td>" +
                             "<td class=\"table-col-right\">"+ item.quantity +"</td></tr>";
                     $salesList.append(tr);
                 });
@@ -219,11 +217,10 @@
                 }
                 $.each(data.amount, function (i, item) {
                     var tr = "<tr><td class=\"table-col-center\">"+ item.sku +"</td>" +
-                            "<td class=\"table-col-left\">"+ item.product_name +"</td>" +
-                            "<td class=\"table-col-right\">"+ item.amount.toFixed(2) +"</td></tr>";
+                            "<td class=\"table-col-left\">"+ item.productName +"</td>" +
+                            "<td class=\"table-col-right\">"+ item.amount +"</td></tr>";
                     $amountList.append(tr);
                 });
-
                 closeLoading();
             }
         });
@@ -248,138 +245,118 @@
             },
             success : function (data) {
                 $("#totalAmountRate").empty();
-                $("#totalAmount").text(data.purchaseAmount.toFixed(2));
-                if(data.purchaseAmountRate >= 0){
-                    $("#totalAmountRate").append(data.purchaseAmountRate+'%'+"<i class=\"fa fa-arrow-up\"></i>");
-                }else{
-                    $("#totalAmountRate").append(data.purchaseAmountRate+'%'+"<i class=\"fa fa-arrow-down\"></i>");
-                }
+                $("#totalAmount").text(data.purchaseAmount);
 
                 $("#purchaseTotalQuantityRate").empty();
                 $("#purchaseTotalQuantity").text(parseFloat(data.purchaseTotalQuantity));
-                if(data.purchaseTotalQuantityRate >= 0){
-                    $("#purchaseTotalQuantityRate").append(data.purchaseTotalQuantityRate+'%'+"<i class=\"fa fa-arrow-up\"></i>");
-                }else{
-                    $("#purchaseTotalQuantityRate").append(data.purchaseTotalQuantityRate+'%'+"<i class=\"fa fa-arrow-down\"></i>");
-                }
 
                 $("#totalQuantityRate").empty();
                 $("#totalQuantity").text(parseFloat(data.totalQuantity));
-                if(data.totalQuantityRate >= 0){
-                    $("#totalQuantityRate").append(data.totalQuantityRate+'%'+"<i class=\"fa fa-arrow-up\"></i>");
-                }else{
-                    $("#totalQuantityRate").append(data.totalQuantityRate+'%'+"<i class=\"fa fa-arrow-down\"></i>");
-                }
 
                 $("#storageQuantityRate").empty();
                 $("#storageQuantity").text(parseFloat(data.storageQuantity));
-                if(data.storageQuantityRate >= 0){
-                    $("#storageQuantityRate").append(data.storageQuantityRate+'%'+"<i class=\"fa fa-arrow-up\"></i>");
-                }else{
-                    $("#storageQuantityRate").append(data.storageQuantityRate+'%'+"<i class=\"fa fa-arrow-down\"></i>");
-                }
 
-                var data1 = new Array();
-                $.each(data.data1, function (i, item) {
-                    data1[i]=new Array();
-                    data1[i][0]= new Date(item.time);
-                    data1[i][1]= item.amount;
-                });
-                chartMonth(data1);
+                // var data1 = new Array();
+                // $.each(data.data1, function (i, item) {
+                //     data1[i]=new Array();
+                //     data1[i][0]= new Date(item.time);
+                //     data1[i][1]= item.amount;
+                // });
+                // chartMonth(data1);
             }
         });
     }
 
-    function chartMonth(data) {
-
-        $.plot($("#chart-dash"), [
-            {
-            data: data,
-            label: "采购金额",
-            lines: {
-                show: true,
-                lineWidth: 1,
-                fill: true,
-                fillColor: {
-                    colors: [{
-                        opacity: 0.05
-                    }, {
-                        opacity: 0.5
-                    }
-                    ]
-                }
-            },
-            points: {
-                show: true,
-                lineWidth: 0.5,
-                fill: true
-            },
-            shadowSize: 0
-        }], {
-            grid: {
-                hoverable: true,
-                clickable: true,
-                tickColor: "#f7f7f7",
-                borderWidth: 0,
-                labelMargin: 10,
-                margin: {
-                    top: 0,
-                    left: 5,
-                    bottom: 0,
-                    right: 0
-                }
-            },
-            legend: {
-                show: true
-            },
-            colors: ["rgba(109,173,189,1)"],
-
-            xaxis: {
-                ticks: 7,
-                mode:"time",
-                timeformat:"%m-%d",
-                tickColor: "#fff"
-            },
-            yaxis: {
-                ticks: 4,
-                tickDecimals: 0
-            },
-        });
-
-        function showTooltip(x, y, contents) {
-            $('<div id="tooltip">' + contents + '</div>').css({
-                position: 'absolute',
-                display: 'none',
-                top: y + 5,
-                left: x + 15,
-                border: '1px solid #333',
-                padding: '4px',
-                color: '#fff',
-                'border-radius': '3px',
-                'background-color': '#333',
-                opacity: 0.80
-            }).appendTo("body").fadeIn(200);
-        }
-
-        var previousPoint = null;
-        $("#chart-dash").bind("plothover", function (event, pos, item) {
-            $("#x").text(pos.x.toFixed(0));
-            $("#y").text(pos.y.toFixed(0));
-            if (item) {
-                if (previousPoint != item.dataIndex) {
-                    previousPoint = item.dataIndex;
-                    $("#tooltip").remove();
-                    var x = item.datapoint[0].toFixed(0),
-                            y = item.datapoint[1].toFixed(0);
-                    showTooltip(item.pageX, item.pageY,new Date(parseInt(x)).format("MM-dd") +"："+
-                            item.series.label + "为" + y);
-                }
-            } else {
-                $("#tooltip").remove();
-                previousPoint = null;
-            }
-        });
-    }
+    // function chartMonth(data) {
+    //
+    //     $.plot($("#chart-dash"), [
+    //         {
+    //         data: data,
+    //         label: "采购金额",
+    //         lines: {
+    //             show: true,
+    //             lineWidth: 1,
+    //             fill: true,
+    //             fillColor: {
+    //                 colors: [{
+    //                     opacity: 0.05
+    //                 }, {
+    //                     opacity: 0.5
+    //                 }
+    //                 ]
+    //             }
+    //         },
+    //         points: {
+    //             show: true,
+    //             lineWidth: 0.5,
+    //             fill: true
+    //         },
+    //         shadowSize: 0
+    //     }], {
+    //         grid: {
+    //             hoverable: true,
+    //             clickable: true,
+    //             tickColor: "#f7f7f7",
+    //             borderWidth: 0,
+    //             labelMargin: 10,
+    //             margin: {
+    //                 top: 0,
+    //                 left: 5,
+    //                 bottom: 0,
+    //                 right: 0
+    //             }
+    //         },
+    //         legend: {
+    //             show: true
+    //         },
+    //         colors: ["rgba(109,173,189,1)"],
+    //
+    //         xaxis: {
+    //             ticks: 7,
+    //             mode:"time",
+    //             timeformat:"%m-%d",
+    //             tickColor: "#fff"
+    //         },
+    //         yaxis: {
+    //             ticks: 4,
+    //             tickDecimals: 0
+    //         },
+    //     });
+    //
+    //     function showTooltip(x, y, contents) {
+    //         $('<div id="tooltip">' + contents + '</div>').css({
+    //             position: 'absolute',
+    //             display: 'none',
+    //             top: y + 5,
+    //             left: x + 15,
+    //             border: '1px solid #333',
+    //             padding: '4px',
+    //             color: '#fff',
+    //             'border-radius': '3px',
+    //             'background-color': '#333',
+    //             opacity: 0.80
+    //         }).appendTo("body").fadeIn(200);
+    //     }
+    //
+    //     var previousPoint = null;
+    //     $("#chart-dash").bind("plothover", function (event, pos, item) {
+    //         $("#x").text(pos.x.toFixed(0));
+    //         $("#y").text(pos.y.toFixed(0));
+    //         if (item) {
+    //             if (previousPoint != item.dataIndex) {
+    //                 previousPoint = item.dataIndex;
+    //                 $("#tooltip").remove();
+    //                 var x = item.datapoint[0].toFixed(0),
+    //                         y = item.datapoint[1].toFixed(0);
+    //                 showTooltip(item.pageX, item.pageY,new Date(parseInt(x)).format("MM-dd") +"："+
+    //                         item.series.label + "为" + y);
+    //             }
+    //         } else {
+    //             $("#tooltip").remove();
+    //             previousPoint = null;
+    //         }
+    //     });
+    // }
 </script>
 <!-- FLOT CHARTS -->
 <script src="<%=basePath%>system/js/flot/jquery.flot.min.js"></script>

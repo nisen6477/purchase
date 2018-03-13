@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.hpu.purchase.mapper.supplier.SupplierMapper" >
+  <resultMap id="BaseResultMap" type="cn.hpu.purchase.po.supplier.Supplier" >
+    <id column="supplier_id" property="supplierId" jdbcType="INTEGER" />
+    <result column="supplier_code" property="supplierCode" jdbcType="VARCHAR" />
+    <result column="supplier_name" property="supplierName" jdbcType="VARCHAR" />
+    <result column="short_name" property="shortName" jdbcType="VARCHAR" />
+    <result column="supplier_type_id" property="supplierTypeId" jdbcType="INTEGER" />
+    <result column="payment_terms_id" property="paymentTermsId" jdbcType="INTEGER" />
+    <result column="supplier_industry_id" property="supplierIndustryId" jdbcType="INTEGER" />
+    <result column="industry" property="industry" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="alipay_account" property="alipayAccount" jdbcType="VARCHAR" />
+    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+    <result column="bank_account" property="bankAccount" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="contact_person" property="contactPerson" jdbcType="VARCHAR" />
+    <result column="address1" property="address1" jdbcType="VARCHAR" />
+    <result column="address2" property="address2" jdbcType="VARCHAR" />
+    <result column="city_id" property="cityId" jdbcType="VARCHAR" />
+    <result column="state_id" property="stateId" jdbcType="VARCHAR" />
+    <result column="country_id" property="countryId" jdbcType="INTEGER" />
+    <result column="zipcode" property="zipcode" jdbcType="VARCHAR" />
+    <result column="serial_no" property="serialNo" jdbcType="INTEGER" />
+    <result column="status_id" property="statusId" jdbcType="INTEGER" />
+    <result column="authentication_status_id" property="authenticationStatusId" jdbcType="INTEGER" />
+    <result column="is_enable" property="isEnable" jdbcType="BIT" />
+    <result column="email_status_id" property="emailStatusId" jdbcType="INTEGER" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="modify_by" property="modifyBy" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from supplier
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hpu.purchase.po.supplier.Supplier" >
+    insert into supplier (supplier_id, supplier_code, supplier_name, 
+      short_name, supplier_type_id, payment_terms_id, 
+      supplier_industry_id, industry, category, 
+      alipay_account, bank_name, bank_account, 
+      phone, email, contact_person, 
+      address1, address2, city_id, 
+      state_id, country_id, zipcode, 
+      serial_no, status_id, authentication_status_id, 
+      is_enable, email_status_id, created_by, 
+      created_date, modify_by, modify_date, 
+      deleted, remark)
+    values (#{supplierId,jdbcType=INTEGER}, #{supplierCode,jdbcType=VARCHAR}, #{supplierName,jdbcType=VARCHAR}, 
+      #{shortName,jdbcType=VARCHAR}, #{supplierTypeId,jdbcType=INTEGER}, #{paymentTermsId,jdbcType=INTEGER}, 
+      #{supplierIndustryId,jdbcType=INTEGER}, #{industry,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
+      #{alipayAccount,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{contactPerson,jdbcType=VARCHAR}, 
+      #{address1,jdbcType=VARCHAR}, #{address2,jdbcType=VARCHAR}, #{cityId,jdbcType=VARCHAR}, 
+      #{stateId,jdbcType=VARCHAR}, #{countryId,jdbcType=INTEGER}, #{zipcode,jdbcType=VARCHAR}, 
+      #{serialNo,jdbcType=INTEGER}, #{statusId,jdbcType=INTEGER}, #{authenticationStatusId,jdbcType=INTEGER}, 
+      #{isEnable,jdbcType=BIT}, #{emailStatusId,jdbcType=INTEGER}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, #{modifyDate,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.hpu.purchase.po.supplier.Supplier" >
+    update supplier
+    set supplier_code = #{supplierCode,jdbcType=VARCHAR},
+      supplier_name = #{supplierName,jdbcType=VARCHAR},
+      short_name = #{shortName,jdbcType=VARCHAR},
+      supplier_type_id = #{supplierTypeId,jdbcType=INTEGER},
+      payment_terms_id = #{paymentTermsId,jdbcType=INTEGER},
+      supplier_industry_id = #{supplierIndustryId,jdbcType=INTEGER},
+      industry = #{industry,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      alipay_account = #{alipayAccount,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      contact_person = #{contactPerson,jdbcType=VARCHAR},
+      address1 = #{address1,jdbcType=VARCHAR},
+      address2 = #{address2,jdbcType=VARCHAR},
+      city_id = #{cityId,jdbcType=VARCHAR},
+      state_id = #{stateId,jdbcType=VARCHAR},
+      country_id = #{countryId,jdbcType=INTEGER},
+      zipcode = #{zipcode,jdbcType=VARCHAR},
+      serial_no = #{serialNo,jdbcType=INTEGER},
+      status_id = #{statusId,jdbcType=INTEGER},
+      authentication_status_id = #{authenticationStatusId,jdbcType=INTEGER},
+      is_enable = #{isEnable,jdbcType=BIT},
+      email_status_id = #{emailStatusId,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select supplier_id, supplier_code, supplier_name, short_name, supplier_type_id, payment_terms_id, 
+    supplier_industry_id, industry, category, alipay_account, bank_name, bank_account, 
+    phone, email, contact_person, address1, address2, city_id, state_id, country_id, 
+    zipcode, serial_no, status_id, authentication_status_id, is_enable, email_status_id, 
+    created_by, created_date, modify_by, modify_date, deleted, remark
+    from supplier
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select supplier_id, supplier_code, supplier_name, short_name, supplier_type_id, payment_terms_id, 
+    supplier_industry_id, industry, category, alipay_account, bank_name, bank_account, 
+    phone, email, contact_person, address1, address2, city_id, state_id, country_id, 
+    zipcode, serial_no, status_id, authentication_status_id, is_enable, email_status_id, 
+    created_by, created_date, modify_by, modify_date, deleted, remark
+    from supplier
+  </select>
+
+  <!--下拉框获取供应商列表-->
+  <select id="getSupplierSpinner" resultMap="BaseResultMap">
+    SELECT
+        s.supplier_id,
+        s.short_name
+    FROM
+        supplier s
+    WHERE
+        s.deleted = 0
+  </select>
+</mapper>

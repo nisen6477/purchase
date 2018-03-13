@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.hpu.purchase.mapper.purchase.PurchaseHeaderMapper" >
+  <resultMap id="BaseResultMap" type="cn.hpu.purchase.po.purchase.PurchaseHeader" >
+    <id column="purchase_id" property="purchaseId" jdbcType="INTEGER" />
+    <result column="supplier_id" property="supplierId" jdbcType="INTEGER" />
+    <result column="inquiry_id" property="inquiryId" jdbcType="INTEGER" />
+    <result column="purchase_type_id" property="purchaseTypeId" jdbcType="INTEGER" />
+    <result column="ref_purchase_id" property="refPurchaseId" jdbcType="INTEGER" />
+    <result column="purchase_code" property="purchaseCode" jdbcType="VARCHAR" />
+    <result column="purchase_date" property="purchaseDate" jdbcType="TIMESTAMP" />
+    <result column="expect_arrive_date" property="expectArriveDate" jdbcType="TIMESTAMP" />
+    <result column="total_quantity" property="totalQuantity" jdbcType="DECIMAL" />
+    <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
+    <result column="total_delivery_amount" property="totalDeliveryAmount" jdbcType="DECIMAL" />
+    <result column="currency_id" property="currencyId" jdbcType="INTEGER" />
+    <result column="purchase_user_id" property="purchaseUserId" jdbcType="INTEGER" />
+    <result column="status_id" property="statusId" jdbcType="INTEGER" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="modify_by" property="modifyBy" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="PurchaseRank" type="cn.hpu.purchase.pojo.purchase.PurchaseRank">
+    <result column="sku" property="sku" jdbcType="VARCHAR"/>
+    <result column="sku" property="productName" jdbcType="VARCHAR"/>
+    <result column="amount" property="amount" jdbcType="DECIMAL"/>
+    <result column="quantity" property="quantity" jdbcType="DECIMAL"/>
+  </resultMap>
+
+  <resultMap id="PurchaseType" type="cn.hpu.purchase.po.purchase.PurchaseType">
+    <result column="purchase_type_id" property="purchaseTypeId" jdbcType="INTEGER"/>
+    <result column="purchase_type_code" property="purchaseTypeCode" jdbcType="VARCHAR"/>
+    <result column="purchase_type_name" property="purchaseTypeName" jdbcType="VARCHAR"/>
+    <result column="serial_no" property="serialNo" jdbcType="INTEGER"/>
+    <result column="remark" property="remark" jdbcType="VARCHAR"/>
+  </resultMap>
+
+  <resultMap id="PurchaseCustom" type="cn.hpu.purchase.pojo.purchase.PurchaseCustomer">
+    <result column="purchase_date" property="purchaseDate" jdbcType="TIMESTAMP"/>
+    <result column="expect_arrive_date" property="expectArriveDate" jdbcType="TIMESTAMP"/>
+    <result column="purchase_code" property="purchaseCode" jdbcType="VARCHAR"/>
+    <result column="short_name" property="shortName" jdbcType="VARCHAR"/>
+    <result column="login_id" property="loginId" jdbcType="INTEGER"/>
+    <result column="total_quantity" property="totalQuantity" jdbcType="DECIMAL"/>
+    <result column="total_amount" property="totalAmount" jdbcType="DECIMAL"/>
+    <result column="currency_code" property="currencyCode" jdbcType="VARCHAR"/>
+    <result column="status_name" property="statusName" jdbcType="VARCHAR"/>
+    <result column="purchase_type_name" property="purchaseTypeName" jdbcType="VARCHAR"/>
+    <result column="first_name" property="firstName" jdbcType="VARCHAR"/>
+    <result column="inquiry_code" property="inquiryCode" jdbcType="VARCHAR"/>
+    <result column="inquiry_id" property="inquiryId" jdbcType="VARCHAR"/>
+  </resultMap>
+
+  <insert id="insert" parameterType="cn.hpu.purchase.po.purchase.PurchaseHeader" >
+    insert into purchase_header (purchase_id, supplier_id, inquiry_id, 
+      purchase_type_id, ref_purchase_id, purchase_code, 
+      purchase_date, expect_arrive_date, total_quantity, 
+      total_amount, total_delivery_amount, currency_id, 
+      purchase_user_id, status_id, created_by, 
+      created_date, modify_by, modify_date, 
+      deleted, remark)
+    values (#{purchaseId,jdbcType=INTEGER}, #{supplierId,jdbcType=INTEGER}, #{inquiryId,jdbcType=INTEGER}, 
+      #{purchaseTypeId,jdbcType=INTEGER}, #{refPurchaseId,jdbcType=INTEGER}, #{purchaseCode,jdbcType=VARCHAR}, 
+      #{purchaseDate,jdbcType=TIMESTAMP}, #{expectArriveDate,jdbcType=TIMESTAMP}, #{totalQuantity,jdbcType=DECIMAL}, 
+      #{totalAmount,jdbcType=DECIMAL}, #{totalDeliveryAmount,jdbcType=DECIMAL}, #{currencyId,jdbcType=INTEGER}, 
+      #{purchaseUserId,jdbcType=INTEGER}, #{statusId,jdbcType=INTEGER}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, #{modifyDate,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.hpu.purchase.po.purchase.PurchaseHeader" >
+    update purchase_header
+    set supplier_id = #{supplierId,jdbcType=INTEGER},
+      inquiry_id = #{inquiryId,jdbcType=INTEGER},
+      purchase_type_id = #{purchaseTypeId,jdbcType=INTEGER},
+      ref_purchase_id = #{refPurchaseId,jdbcType=INTEGER},
+      purchase_code = #{purchaseCode,jdbcType=VARCHAR},
+      purchase_date = #{purchaseDate,jdbcType=TIMESTAMP},
+      expect_arrive_date = #{expectArriveDate,jdbcType=TIMESTAMP},
+      total_quantity = #{totalQuantity,jdbcType=DECIMAL},
+      total_amount = #{totalAmount,jdbcType=DECIMAL},
+      total_delivery_amount = #{totalDeliveryAmount,jdbcType=DECIMAL},
+      currency_id = #{currencyId,jdbcType=INTEGER},
+      purchase_user_id = #{purchaseUserId,jdbcType=INTEGER},
+      status_id = #{statusId,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where purchase_id = #{purchaseId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select purchase_id, supplier_id, inquiry_id, purchase_type_id, ref_purchase_id, purchase_code, 
+    purchase_date, expect_arrive_date, total_quantity, total_amount, total_delivery_amount, 
+    currency_id, purchase_user_id, status_id, created_by, created_date, modify_by, modify_date, 
+    deleted, remark
+    from purchase_header
+    where purchase_id = #{purchaseId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select purchase_id, supplier_id, inquiry_id, purchase_type_id, ref_purchase_id, purchase_code, 
+    purchase_date, expect_arrive_date, total_quantity, total_amount, total_delivery_amount, 
+    currency_id, purchase_user_id, status_id, created_by, created_date, modify_by, modify_date, 
+    deleted, remark
+    from purchase_header
+  </select>
+
+  <!-- 查询销量排行以及销售金额排行 -->
+  <select id="getPurchaseRankTopTen" resultMap="PurchaseRank" parameterType="map">
+    SELECT
+      p.sku,
+      p.product_name,
+      <if test="status == 'amount'">
+        SUM(pd.amount) AS amount
+      </if>
+      <if test="status == 'quantity'">
+        SUM(pd.quantity) AS quantity
+      </if>
+      FROM
+          purchase_detail pd
+      LEFT JOIN purchase_header ph ON pd.purchase_id = ph.purchase_id
+      LEFT JOIN product p ON p.product_id = pd.product_id
+      WHERE p.deleted = 0
+      GROUP BY
+          p.product_id
+      ORDER BY
+        <if test="status == 'amount'">
+          SUM(pd.amount) DESC
+        </if>
+        <if test="status == 'quantity'">
+          SUM(pd.quantity) DESC
+        </if>
+        ,p.sku
+        LIMIT 0,10
+  </select>
+
+  <!--采购总金额-->
+  <select id="getPurchaseTotalAmount" resultType="java.math.BigDecimal">
+    SELECT
+        SUM(ph.total_amount) + SUM(ph.total_delivery_amount)
+    FROM
+        purchase_header ph
+    WHERE
+        ph.deleted = 0
+  </select>
+
+  <!--采购商品总数-->
+  <select id="getPurchaseProductTotalQuantity" resultType="java.math.BigDecimal">
+    SELECT
+        SUM(ph.total_quantity)
+    FROM
+        purchase_header ph
+    WHERE
+        ph.deleted = 0
+  </select>
+
+  <!--采购单数量-->
+  <select id="getPurchaseHeaderQuantity" resultType="java.lang.Integer">
+    SELECT
+        count(ph.purchase_id)
+    FROM
+        purchase_header ph
+    WHERE
+        ph.deleted = 0
+  </select>
+
+  <!--获取采购类型下拉列表-->
+  <select id="getPurchaseTypeForSpinner" resultMap="PurchaseType">
+    SELECT
+        pt.purchase_type_id,
+        pt.purchase_type_name
+    FROM
+        purchase_type pt
+    ORDER BY
+        serial_no
+  </select>
+
+  <!--查询采购单管理列表页面信息-->
+  <select id="getPurchasePage" parameterType="map" resultMap="PurchaseCustom">
+    SELECT
+        ph.purchase_date,
+        ph.expect_arrive_date,
+        ph.purchase_code,
+        ih.inquiry_id,
+        ih.inquiry_code,
+        s.short_name,
+        su.first_name,
+        ph.total_quantity,
+        ph.total_amount,
+        c.currency_code,
+        st.status_name,
+        pt.purchase_type_name
+    FROM
+        purchase_header ph
+    LEFT JOIN supplier s ON s.supplier_id = ph.supplier_id
+    LEFT JOIN system_user su ON su.system_user_id = ph.created_by
+    LEFT JOIN currency c ON c.currency_id = ph.currency_id
+    LEFT JOIN `status` st ON st.status_id = ph.status_id
+    LEFT JOIN purchase_type pt ON pt.purchase_type_id = ph.purchase_type_id
+    LEFT JOIN inquiry_header ih ON ih.inquiry_id = ph.inquiry_id
+    WHERE
+        ph.deleted = 0
+    ORDER BY
+        ph.purchase_date DESC
+  </select>
+</mapper>

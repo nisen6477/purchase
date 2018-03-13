@@ -20,17 +20,17 @@ public class SystemMenuController {
     @Autowired
     private SystemMenuService systemMenuService;
 
-    @RequestMapping(value = "/index")
-    public ModelAndView toIndex(HttpServletRequest request){
-        System.out.println("111111111111111111111111");
-        ModelAndView mv = new ModelAndView();
-        try {
-            Map<String, Object> map = systemMenuService.getUserSystemMenu(request);
-            mv.addObject("leftMenu",map.get("leftMenu"));
-            mv.setViewName("system/purchase/index");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return mv;
-    }
+//    @RequestMapping(value = "/index")
+//    public ModelAndView toIndex(HttpServletRequest request){
+//        System.out.println("111111111111111111111111");
+//        ModelAndView mv = new ModelAndView();
+//        try {
+//            Map<String, Object> map = systemMenuService.getUserSystemMenu(request);
+//            mv.addObject("leftMenu",map.get("leftMenu"));
+//            mv.setViewName("system/purchase/index");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return mv;
+//    }
 }

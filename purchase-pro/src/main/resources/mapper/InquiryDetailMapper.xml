@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.hpu.purchase.mapper.inquiry.InquiryDetailMapper" >
+  <resultMap id="BaseResultMap" type="cn.hpu.purchase.po.inquiry.InquiryDetail" >
+    <id column="inquiry_detail_id" property="inquiryDetailId" jdbcType="INTEGER" />
+    <result column="inquiry_id" property="inquiryId" jdbcType="INTEGER" />
+    <result column="product_id" property="productId" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="quantity" property="quantity" jdbcType="DECIMAL" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="currency_id" property="currencyId" jdbcType="INTEGER" />
+    <result column="package_type_id" property="packageTypeId" jdbcType="INTEGER" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="modify_by" property="modifyBy" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from inquiry_detail
+    where inquiry_detail_id = #{inquiryDetailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hpu.purchase.po.inquiry.InquiryDetail" >
+    insert into inquiry_detail (inquiry_detail_id, inquiry_id, product_id, 
+      price, quantity, amount, 
+      currency_id, package_type_id, created_by, 
+      created_date, modify_by, modify_date, 
+      deleted, remark)
+    values (#{inquiryDetailId,jdbcType=INTEGER}, #{inquiryId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
+      #{price,jdbcType=DECIMAL}, #{quantity,jdbcType=DECIMAL}, #{amount,jdbcType=DECIMAL}, 
+      #{currencyId,jdbcType=INTEGER}, #{packageTypeId,jdbcType=INTEGER}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, #{modifyDate,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.hpu.purchase.po.inquiry.InquiryDetail" >
+    update inquiry_detail
+    set inquiry_id = #{inquiryId,jdbcType=INTEGER},
+      product_id = #{productId,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      quantity = #{quantity,jdbcType=DECIMAL},
+      amount = #{amount,jdbcType=DECIMAL},
+      currency_id = #{currencyId,jdbcType=INTEGER},
+      package_type_id = #{packageTypeId,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where inquiry_detail_id = #{inquiryDetailId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select inquiry_detail_id, inquiry_id, product_id, price, quantity, amount, currency_id, 
+    package_type_id, created_by, created_date, modify_by, modify_date, deleted, remark
+    from inquiry_detail
+    where inquiry_detail_id = #{inquiryDetailId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select inquiry_detail_id, inquiry_id, product_id, price, quantity, amount, currency_id, 
+    package_type_id, created_by, created_date, modify_by, modify_date, deleted, remark
+    from inquiry_detail
+  </select>
+</mapper>

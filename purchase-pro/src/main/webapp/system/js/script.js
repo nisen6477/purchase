@@ -172,7 +172,7 @@ var App = function () {
 			jQuery('#main-content').addClass("margin-left-50");
 			collapsed = true;
         }
-		//Handle sidebar collapse on system interaction
+		//Handle sidebar collapse on user interaction
 		jQuery('.sidebar-collapse').click(function () {
 			//Handle mobile sidebar toggle
 			if(is_mobile && !(is_mini_menu)){
@@ -512,7 +512,7 @@ var App = function () {
 	/*	Bootbox alerts
 	/*-----------------------------------------------------------------------------------*/
 	var handleBootbox = function () {
-		$(".system-alert").click(function(){
+		$(".basic-alert").click(function(){
 			bootbox.alert("Hello World");
 		});
 		$(".confirm-dialog").click(function(){

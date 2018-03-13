@@ -17,7 +17,7 @@ public interface ResponseMessage {
     String SAVE_PRODUCT_CONSONLISATION_ERROR = "所选商品均已添加过本组合。";
     String DB_ERROR = "Access to database failed.";
     String LOGIN_ERROR = "用户名或密码错误。";
-    String LOGIN_SUCCESS = "登录成功。";
+    String LOGIN_SUCCESS = "success";
     String CODE_ERROR = "编码已存在,请重新输入。";
     String CODE_SUCCESS = "编码输入正确。";
     String REPEAT_SUBMIT = "请求已提交，请等待。";

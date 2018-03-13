@@ -38,10 +38,10 @@
         <property name="suffix" value=".jsp"/>
     </bean>
     <!--ireport视图解析-->
-    <bean id="jasperReportResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
-        <property name="order" value="0"/>
-        <property name="location" value="/WEB-INF/jasper/jasper-defs.xml"/>
-    </bean>
+    <!--<bean id="jasperReportResolver" class="org.springframework.web.servlet.view.XmlViewResolver">-->
+        <!--<property name="order" value="0"/>-->
+        <!--<property name="location" value="/WEB-INF/jasper/jasper-defs.xml"/>-->
+    <!--</bean>-->
 
     <!--文件上传-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

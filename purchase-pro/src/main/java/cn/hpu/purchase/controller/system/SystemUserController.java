@@ -58,7 +58,7 @@ public class SystemUserController extends BaseController {
         try {
             SystemUser systemUser = systemUserService.getSystemUser(username, password, request);
             if (systemUser != null){
-                map.put("message", "success");
+                map.put("message", ResponseMessage.LOGIN_SUCCESS);
                 return map;
             } else {
                 map.put("message", ResponseMessage.LOGIN_ERROR);

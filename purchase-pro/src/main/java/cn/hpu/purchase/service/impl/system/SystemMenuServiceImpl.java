@@ -3,7 +3,6 @@ package cn.hpu.purchase.service.impl.system;
 import cn.hpu.purchase.mapper.system.SystemMenuMapper;
 import cn.hpu.purchase.po.system.SystemMenu;
 import cn.hpu.purchase.po.system.SystemUser;
-import cn.hpu.purchase.pojo.SystemMenuCustom;
 import cn.hpu.purchase.service.system.SystemMenuService;
 import cn.hpu.purchase.util.SessionKey;
 import org.springframework.beans.factory.annotation.Autowired;

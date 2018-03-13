@@ -298,7 +298,7 @@ jQuery.validator.addMethod("postalcodeNL", function(value, element) {
 /*
  * Dutch bank account numbers (not 'giro' numbers) have 9 digits
  * and pass the '11 check'.
- * We accept the notation with spaces, as that is system.
+ * We accept the notation with spaces, as that is common.
  * acceptable: 123456789 or 12 34 56 789
  */
 jQuery.validator.addMethod("bankaccountNL", function(value, element) {

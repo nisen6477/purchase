@@ -1,5 +1,9 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="cn">
+<head>
+    <title>purchase-index</title>
+</head>
 <body>
-<h2>Hello World!</h2>
+hello
 </body>
 </html>

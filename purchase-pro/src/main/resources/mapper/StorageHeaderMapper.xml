@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.hpu.purchase.mapper.storage.StorageHeaderMapper" >
+  <resultMap id="BaseResultMap" type="cn.hpu.purchase.po.storage.StorageHeader" >
+    <id column="storage_id" property="storageId" jdbcType="INTEGER" />
+    <result column="storage_code" property="storageCode" jdbcType="VARCHAR" />
+    <result column="access_mode_id" property="accessModeId" jdbcType="INTEGER" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="warehouse_id" property="warehouseId" jdbcType="INTEGER" />
+    <result column="purchase_id" property="purchaseId" jdbcType="INTEGER" />
+    <result column="supplier_id" property="supplierId" jdbcType="INTEGER" />
+    <result column="item_owner_id" property="itemOwnerId" jdbcType="INTEGER" />
+    <result column="check_type" property="checkType" jdbcType="VARCHAR" />
+    <result column="check_date" property="checkDate" jdbcType="TIMESTAMP" />
+    <result column="estimate_date" property="estimateDate" jdbcType="TIMESTAMP" />
+    <result column="confirm_date" property="confirmDate" jdbcType="TIMESTAMP" />
+    <result column="confirm_by" property="confirmBy" jdbcType="INTEGER" />
+    <result column="ref_storage_id" property="refStorageId" jdbcType="INTEGER" />
+    <result column="sender_name" property="senderName" jdbcType="VARCHAR" />
+    <result column="sender_tel" property="senderTel" jdbcType="VARCHAR" />
+    <result column="sender_address" property="senderAddress" jdbcType="VARCHAR" />
+    <result column="consignee_name" property="consigneeName" jdbcType="VARCHAR" />
+    <result column="consignee_email" property="consigneeEmail" jdbcType="VARCHAR" />
+    <result column="consignee_tel" property="consigneeTel" jdbcType="VARCHAR" />
+    <result column="consignee_address" property="consigneeAddress" jdbcType="VARCHAR" />
+    <result column="consignee_zipcode" property="consigneeZipcode" jdbcType="VARCHAR" />
+    <result column="consignee_district_id" property="consigneeDistrictId" jdbcType="VARCHAR" />
+    <result column="consignee_city_id" property="consigneeCityId" jdbcType="VARCHAR" />
+    <result column="consignee_state_id" property="consigneeStateId" jdbcType="VARCHAR" />
+    <result column="consignee_country_id" property="consigneeCountryId" jdbcType="INTEGER" />
+    <result column="status_id" property="statusId" jdbcType="INTEGER" />
+    <result column="channel_from" property="channelFrom" jdbcType="VARCHAR" />
+    <result column="customer_bill_number" property="customerBillNumber" jdbcType="VARCHAR" />
+    <result column="delivery_type_id" property="deliveryTypeId" jdbcType="INTEGER" />
+    <result column="hawb_number" property="hawbNumber" jdbcType="VARCHAR" />
+    <result column="mawb_number" property="mawbNumber" jdbcType="VARCHAR" />
+    <result column="flight_number" property="flightNumber" jdbcType="VARCHAR" />
+    <result column="service_provider" property="serviceProvider" jdbcType="INTEGER" />
+    <result column="operation_user_id" property="operationUserId" jdbcType="INTEGER" />
+    <result column="transfer_to_warehouse_id" property="transferToWarehouseId" jdbcType="INTEGER" />
+    <result column="total_weight" property="totalWeight" jdbcType="DECIMAL" />
+    <result column="total_declare_value" property="totalDeclareValue" jdbcType="DECIMAL" />
+    <result column="declare_currency_id" property="declareCurrencyId" jdbcType="INTEGER" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="modify_by" property="modifyBy" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from storage_header
+    where storage_id = #{storageId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hpu.purchase.po.storage.StorageHeader" >
+    insert into storage_header (storage_id, storage_code, access_mode_id, 
+      store_id, warehouse_id, purchase_id, 
+      supplier_id, item_owner_id, check_type, 
+      check_date, estimate_date, confirm_date, 
+      confirm_by, ref_storage_id, sender_name, 
+      sender_tel, sender_address, consignee_name, 
+      consignee_email, consignee_tel, consignee_address, 
+      consignee_zipcode, consignee_district_id, 
+      consignee_city_id, consignee_state_id, consignee_country_id, 
+      status_id, channel_from, customer_bill_number, 
+      delivery_type_id, hawb_number, mawb_number, 
+      flight_number, service_provider, operation_user_id, 
+      transfer_to_warehouse_id, total_weight, total_declare_value, 
+      declare_currency_id, created_by, created_date, 
+      modify_by, modify_date, deleted, 
+      remark)
+    values (#{storageId,jdbcType=INTEGER}, #{storageCode,jdbcType=VARCHAR}, #{accessModeId,jdbcType=INTEGER}, 
+      #{storeId,jdbcType=INTEGER}, #{warehouseId,jdbcType=INTEGER}, #{purchaseId,jdbcType=INTEGER}, 
+      #{supplierId,jdbcType=INTEGER}, #{itemOwnerId,jdbcType=INTEGER}, #{checkType,jdbcType=VARCHAR}, 
+      #{checkDate,jdbcType=TIMESTAMP}, #{estimateDate,jdbcType=TIMESTAMP}, #{confirmDate,jdbcType=TIMESTAMP}, 
+      #{confirmBy,jdbcType=INTEGER}, #{refStorageId,jdbcType=INTEGER}, #{senderName,jdbcType=VARCHAR}, 
+      #{senderTel,jdbcType=VARCHAR}, #{senderAddress,jdbcType=VARCHAR}, #{consigneeName,jdbcType=VARCHAR}, 
+      #{consigneeEmail,jdbcType=VARCHAR}, #{consigneeTel,jdbcType=VARCHAR}, #{consigneeAddress,jdbcType=VARCHAR}, 
+      #{consigneeZipcode,jdbcType=VARCHAR}, #{consigneeDistrictId,jdbcType=VARCHAR}, 
+      #{consigneeCityId,jdbcType=VARCHAR}, #{consigneeStateId,jdbcType=VARCHAR}, #{consigneeCountryId,jdbcType=INTEGER}, 
+      #{statusId,jdbcType=INTEGER}, #{channelFrom,jdbcType=VARCHAR}, #{customerBillNumber,jdbcType=VARCHAR}, 
+      #{deliveryTypeId,jdbcType=INTEGER}, #{hawbNumber,jdbcType=VARCHAR}, #{mawbNumber,jdbcType=VARCHAR}, 
+      #{flightNumber,jdbcType=VARCHAR}, #{serviceProvider,jdbcType=INTEGER}, #{operationUserId,jdbcType=INTEGER}, 
+      #{transferToWarehouseId,jdbcType=INTEGER}, #{totalWeight,jdbcType=DECIMAL}, #{totalDeclareValue,jdbcType=DECIMAL}, 
+      #{declareCurrencyId,jdbcType=INTEGER}, #{createdBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, 
+      #{modifyBy,jdbcType=VARCHAR}, #{modifyDate,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.hpu.purchase.po.storage.StorageHeader" >
+    update storage_header
+    set storage_code = #{storageCode,jdbcType=VARCHAR},
+      access_mode_id = #{accessModeId,jdbcType=INTEGER},
+      store_id = #{storeId,jdbcType=INTEGER},
+      warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      purchase_id = #{purchaseId,jdbcType=INTEGER},
+      supplier_id = #{supplierId,jdbcType=INTEGER},
+      item_owner_id = #{itemOwnerId,jdbcType=INTEGER},
+      check_type = #{checkType,jdbcType=VARCHAR},
+      check_date = #{checkDate,jdbcType=TIMESTAMP},
+      estimate_date = #{estimateDate,jdbcType=TIMESTAMP},
+      confirm_date = #{confirmDate,jdbcType=TIMESTAMP},
+      confirm_by = #{confirmBy,jdbcType=INTEGER},
+      ref_storage_id = #{refStorageId,jdbcType=INTEGER},
+      sender_name = #{senderName,jdbcType=VARCHAR},
+      sender_tel = #{senderTel,jdbcType=VARCHAR},
+      sender_address = #{senderAddress,jdbcType=VARCHAR},
+      consignee_name = #{consigneeName,jdbcType=VARCHAR},
+      consignee_email = #{consigneeEmail,jdbcType=VARCHAR},
+      consignee_tel = #{consigneeTel,jdbcType=VARCHAR},
+      consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+      consignee_zipcode = #{consigneeZipcode,jdbcType=VARCHAR},
+      consignee_district_id = #{consigneeDistrictId,jdbcType=VARCHAR},
+      consignee_city_id = #{consigneeCityId,jdbcType=VARCHAR},
+      consignee_state_id = #{consigneeStateId,jdbcType=VARCHAR},
+      consignee_country_id = #{consigneeCountryId,jdbcType=INTEGER},
+      status_id = #{statusId,jdbcType=INTEGER},
+      channel_from = #{channelFrom,jdbcType=VARCHAR},
+      customer_bill_number = #{customerBillNumber,jdbcType=VARCHAR},
+      delivery_type_id = #{deliveryTypeId,jdbcType=INTEGER},
+      hawb_number = #{hawbNumber,jdbcType=VARCHAR},
+      mawb_number = #{mawbNumber,jdbcType=VARCHAR},
+      flight_number = #{flightNumber,jdbcType=VARCHAR},
+      service_provider = #{serviceProvider,jdbcType=INTEGER},
+      operation_user_id = #{operationUserId,jdbcType=INTEGER},
+      transfer_to_warehouse_id = #{transferToWarehouseId,jdbcType=INTEGER},
+      total_weight = #{totalWeight,jdbcType=DECIMAL},
+      total_declare_value = #{totalDeclareValue,jdbcType=DECIMAL},
+      declare_currency_id = #{declareCurrencyId,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where storage_id = #{storageId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select storage_id, storage_code, access_mode_id, store_id, warehouse_id, purchase_id, 
+    supplier_id, item_owner_id, check_type, check_date, estimate_date, confirm_date, 
+    confirm_by, ref_storage_id, sender_name, sender_tel, sender_address, consignee_name, 
+    consignee_email, consignee_tel, consignee_address, consignee_zipcode, consignee_district_id, 
+    consignee_city_id, consignee_state_id, consignee_country_id, status_id, channel_from, 
+    customer_bill_number, delivery_type_id, hawb_number, mawb_number, flight_number, 
+    service_provider, operation_user_id, transfer_to_warehouse_id, total_weight, total_declare_value, 
+    declare_currency_id, created_by, created_date, modify_by, modify_date, deleted, remark
+    from storage_header
+    where storage_id = #{storageId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select storage_id, storage_code, access_mode_id, store_id, warehouse_id, purchase_id, 
+    supplier_id, item_owner_id, check_type, check_date, estimate_date, confirm_date, 
+    confirm_by, ref_storage_id, sender_name, sender_tel, sender_address, consignee_name, 
+    consignee_email, consignee_tel, consignee_address, consignee_zipcode, consignee_district_id, 
+    consignee_city_id, consignee_state_id, consignee_country_id, status_id, channel_from, 
+    customer_bill_number, delivery_type_id, hawb_number, mawb_number, flight_number, 
+    service_provider, operation_user_id, transfer_to_warehouse_id, total_weight, total_declare_value, 
+    declare_currency_id, created_by, created_date, modify_by, modify_date, deleted, remark
+    from storage_header
+  </select>
+
+  <!--查询入库单数量-->
+  <select id="getStorageHeaderQuantity" resultType="java.lang.Integer">
+    -- 入库单数量
+    SELECT
+        count(sh.storage_id)
+    FROM
+        storage_header sh
+    WHERE
+        sh.deleted = 0
+    AND sh.check_type = 'IN'
+    -- 只统计有采购单信息的，即以采购入库的方式入库的
+    AND sh.purchase_id > 0
+    -- 以采购入库方式入库
+    AND sh.access_mode_id = 1
+  </select>
+</mapper>

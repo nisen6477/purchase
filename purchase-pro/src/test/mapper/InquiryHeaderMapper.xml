@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test/mapper.InquiryHeaderMapper">
+  <resultMap id="BaseResultMap" type="test/po.InquiryHeader">
+    <id column="inquiry_id" jdbcType="INTEGER" property="inquiryId" />
+    <result column="inquiry_code" jdbcType="VARCHAR" property="inquiryCode" />
+    <result column="supplier_id" jdbcType="INTEGER" property="supplierId" />
+    <result column="inquiry_date" jdbcType="TIMESTAMP" property="inquiryDate" />
+    <result column="inquiry_user_id" jdbcType="INTEGER" property="inquiryUserId" />
+    <result column="status_id" jdbcType="VARCHAR" property="statusId" />
+    <result column="total_quantity" jdbcType="DECIMAL" property="totalQuantity" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="currency_id" jdbcType="INTEGER" property="currencyId" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="modify_by" jdbcType="VARCHAR" property="modifyBy" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from inquiry_header
+    where inquiry_id = #{inquiryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="test/po.InquiryHeader">
+    insert into inquiry_header (inquiry_id, inquiry_code, supplier_id, 
+      inquiry_date, inquiry_user_id, status_id, 
+      total_quantity, total_amount, currency_id, 
+      created_by, created_date, modify_by, 
+      modify_date, deleted, remark
+      )
+    values (#{inquiryId,jdbcType=INTEGER}, #{inquiryCode,jdbcType=VARCHAR}, #{supplierId,jdbcType=INTEGER}, 
+      #{inquiryDate,jdbcType=TIMESTAMP}, #{inquiryUserId,jdbcType=INTEGER}, #{statusId,jdbcType=VARCHAR}, 
+      #{totalQuantity,jdbcType=DECIMAL}, #{totalAmount,jdbcType=DECIMAL}, #{currencyId,jdbcType=INTEGER}, 
+      #{createdBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, 
+      #{modifyDate,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="test/po.InquiryHeader">
+    update inquiry_header
+    set inquiry_code = #{inquiryCode,jdbcType=VARCHAR},
+      supplier_id = #{supplierId,jdbcType=INTEGER},
+      inquiry_date = #{inquiryDate,jdbcType=TIMESTAMP},
+      inquiry_user_id = #{inquiryUserId,jdbcType=INTEGER},
+      status_id = #{statusId,jdbcType=VARCHAR},
+      total_quantity = #{totalQuantity,jdbcType=DECIMAL},
+      total_amount = #{totalAmount,jdbcType=DECIMAL},
+      currency_id = #{currencyId,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where inquiry_id = #{inquiryId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select inquiry_id, inquiry_code, supplier_id, inquiry_date, inquiry_user_id, status_id, 
+    total_quantity, total_amount, currency_id, created_by, created_date, modify_by, modify_date, 
+    deleted, remark
+    from inquiry_header
+    where inquiry_id = #{inquiryId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select inquiry_id, inquiry_code, supplier_id, inquiry_date, inquiry_user_id, status_id, 
+    total_quantity, total_amount, currency_id, created_by, created_date, modify_by, modify_date, 
+    deleted, remark
+    from inquiry_header
+  </select>
+  <resultMap id="BaseResultMap" type="test/po.InquiryHeader">
+    <id column="inquiry_id" jdbcType="INTEGER" property="inquiryId" />
+    <result column="inquiry_code" jdbcType="VARCHAR" property="inquiryCode" />
+    <result column="supplier_id" jdbcType="INTEGER" property="supplierId" />
+    <result column="inquiry_date" jdbcType="TIMESTAMP" property="inquiryDate" />
+    <result column="inquiry_user_id" jdbcType="INTEGER" property="inquiryUserId" />
+    <result column="status_id" jdbcType="VARCHAR" property="statusId" />
+    <result column="total_quantity" jdbcType="DECIMAL" property="totalQuantity" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="currency_id" jdbcType="INTEGER" property="currencyId" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="modify_by" jdbcType="VARCHAR" property="modifyBy" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from inquiry_header
+    where inquiry_id = #{inquiryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="test/po.InquiryHeader">
+    insert into inquiry_header (inquiry_id, inquiry_code, supplier_id, 
+      inquiry_date, inquiry_user_id, status_id, 
+      total_quantity, total_amount, currency_id, 
+      created_by, created_date, modify_by, 
+      modify_date, deleted, remark
+      )
+    values (#{inquiryId,jdbcType=INTEGER}, #{inquiryCode,jdbcType=VARCHAR}, #{supplierId,jdbcType=INTEGER}, 
+      #{inquiryDate,jdbcType=TIMESTAMP}, #{inquiryUserId,jdbcType=INTEGER}, #{statusId,jdbcType=VARCHAR}, 
+      #{totalQuantity,jdbcType=DECIMAL}, #{totalAmount,jdbcType=DECIMAL}, #{currencyId,jdbcType=INTEGER}, 
+      #{createdBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, 
+      #{modifyDate,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="test/po.InquiryHeader">
+    update inquiry_header
+    set inquiry_code = #{inquiryCode,jdbcType=VARCHAR},
+      supplier_id = #{supplierId,jdbcType=INTEGER},
+      inquiry_date = #{inquiryDate,jdbcType=TIMESTAMP},
+      inquiry_user_id = #{inquiryUserId,jdbcType=INTEGER},
+      status_id = #{statusId,jdbcType=VARCHAR},
+      total_quantity = #{totalQuantity,jdbcType=DECIMAL},
+      total_amount = #{totalAmount,jdbcType=DECIMAL},
+      currency_id = #{currencyId,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where inquiry_id = #{inquiryId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select inquiry_id, inquiry_code, supplier_id, inquiry_date, inquiry_user_id, status_id, 
+    total_quantity, total_amount, currency_id, created_by, created_date, modify_by, modify_date, 
+    deleted, remark
+    from inquiry_header
+    where inquiry_id = #{inquiryId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select inquiry_id, inquiry_code, supplier_id, inquiry_date, inquiry_user_id, status_id, 
+    total_quantity, total_amount, currency_id, created_by, created_date, modify_by, modify_date, 
+    deleted, remark
+    from inquiry_header
+  </select>
+</mapper>
